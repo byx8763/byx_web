@@ -6,7 +6,7 @@
 
 1. 在 Supabase Authentication 建立管理員帳號，關閉公開註冊及匿名登入。若開啟公開註冊，任何人都能建立帳號，即使無法讀取其他帳號資料。
 2. 在指定 Supabase 專案執行 `schema.sql`。RLS 以登入者身分隔離員工；日後新增帳號不會自動共用原有資料，需另外設計授權。
-3. 將網站檔案發布至 GitHub Pages，首次登入時在瀏覽器輸入 Supabase 的 publishable key 或舊版 anon key。它是公開用金鑰，會儲存在瀏覽器，不能當成保護資料的密碼。
+3. 將網站檔案發布至 GitHub Pages，每台裝置首次登入時在瀏覽器輸入 Supabase 的 publishable key 或舊版 anon key，之後只需帳號密碼。清除瀏覽器資料或更換瀏覽器時需要重新設定。公開金鑰會儲存在瀏覽器，不能當成保護資料的密碼。
 4. 使用剛建立的帳號登入。GitHub 儲存庫不需要包含任何 API key。
 
 ## 到期日算法

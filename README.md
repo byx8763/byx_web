@@ -1,4 +1,4 @@
-# 員工體檢管理
+# 管理系統
 
 靜態網站，可由 GitHub Pages 發布。員工資料儲存在 Supabase；請勿將密碼、私密 API key 或 service_role key 提交至 GitHub。
 

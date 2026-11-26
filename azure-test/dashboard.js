@@ -5,13 +5,8 @@ function showPage(page) {
   document.querySelectorAll('[data-page]').forEach(b => { b.classList.toggle('active', b.dataset.page === page); if (b.dataset.page === page) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
   if (page === 'home') renderHome();
   if (page === 'coupons' && !couponLoaded) { couponLoaded = true; refreshCoupons(); }
-  if (page === 'pms' && !$('pmsFrame').getAttribute('src')) $('pmsFrame').src = 'pms/index.html';
+  if (page === 'pms') window.PMSDashboard.activate();
 }
-window.addEventListener('message', async event => {
-  if (event.origin !== location.origin || event.source !== $('pmsFrame').contentWindow || event.data?.type !== 'pms-read' || $('pmsPage').hidden || typeof event.data.id !== 'string') return;
-  try { const data = await api('/pms'); if (data) event.source.postMessage({type:'pms-result',id:event.data.id,data}, location.origin); }
-  catch (error) { event.source.postMessage({type:'pms-result',id:event.data.id,error:error.message}, location.origin); }
-});
 document.querySelectorAll('[data-page],[data-go]').forEach(b => b.addEventListener('click', () => showPage(b.dataset.page || b.dataset.go)));
 function renderHome() {
   const items = [];
